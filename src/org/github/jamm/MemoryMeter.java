@@ -3,6 +3,7 @@ package org.github.jamm;
 import java.lang.instrument.Instrumentation;
 import java.lang.ref.Reference;
 import java.lang.reflect.Field;
+import java.lang.reflect.InaccessibleObjectException;
 import java.lang.reflect.Modifier;
 import java.nio.ByteBuffer;
 import java.util.ArrayDeque;
@@ -327,7 +328,17 @@ public class MemoryMeter {
                 	continue;
                 }
 
-                field.setAccessible(true);
+                try {
+                    field.setAccessible(true);
+                } catch(SecurityException e) {
+                    // do nothing
+                    // Java 9+ can throw java.lang.reflect.InaccessibleObjectException but the class is Java 9+-only
+                } catch (InaccessibleObjectException e) {
+                    //do nothing
+                    //Java 11+  Unable to make field jdk.internal.ref.PhantomCleanable jdk.internal.ref.PhantomCleanable.prev accessible: module java.base does not "opens jdk.internal.ref"
+                    // to unnamed module @c919c76: java.lang.reflect.InaccessibleObjectException: Unable to make field jdk.internal.ref.PhantomCleanable jdk.internal.ref.PhantomCleanable.prev
+                    // accessible: module java.base does not "opens jdk.internal.ref" to unnamed module @c919c76
+                }
                 Object child;
                 try {
                     child = field.get(current);
