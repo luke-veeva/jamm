@@ -333,6 +333,7 @@ public class MemoryMeter {
                 } catch(SecurityException e) {
                     // do nothing
                     // Java 9+ can throw java.lang.reflect.InaccessibleObjectException but the class is Java 9+-only
+                    continue;
                 } catch (InaccessibleObjectException e) {
                     //do nothing
                     //Java 11+  Unable to make field jdk.internal.ref.PhantomCleanable jdk.internal.ref.PhantomCleanable.prev accessible: module java.base does not "opens jdk.internal.ref"
