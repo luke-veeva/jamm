@@ -338,6 +338,14 @@ public class MemoryMeter {
                     //Java 11+  Unable to make field jdk.internal.ref.PhantomCleanable jdk.internal.ref.PhantomCleanable.prev accessible: module java.base does not "opens jdk.internal.ref"
                     // to unnamed module @c919c76: java.lang.reflect.InaccessibleObjectException: Unable to make field jdk.internal.ref.PhantomCleanable jdk.internal.ref.PhantomCleanable.prev
                     // accessible: module java.base does not "opens jdk.internal.ref" to unnamed module @c919c76
+                    continue;
+                } catch (Exception e) {
+                    System.out.println("jamm other Exception: " + e.getClass().getCanonicalName());
+                    //do nothing
+                    //Java 11+  Unable to make field jdk.internal.ref.PhantomCleanable jdk.internal.ref.PhantomCleanable.prev accessible: module java.base does not "opens jdk.internal.ref"
+                    // to unnamed module @c919c76: java.lang.reflect.InaccessibleObjectException: Unable to make field jdk.internal.ref.PhantomCleanable jdk.internal.ref.PhantomCleanable.prev
+                    // accessible: module java.base does not "opens jdk.internal.ref" to unnamed module @c919c76
+                    continue;
                 }
                 Object child;
                 try {
