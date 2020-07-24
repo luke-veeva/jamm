@@ -34,7 +34,7 @@ import org.openjdk.jmh.infra.Blackhole;
 @OutputTimeUnit(TimeUnit.MICROSECONDS)
 public class Microbench
 {
-    @Param({ "ALWAYS_SPEC", "ALWAYS_UNSAFE", "NEVER" })
+    @Param({ "ALWAYS_SPEC", "ALWAYS_UNSAFE", "ALWAYS_INSTRUMENTATION" })
     private String guess;
 
     private MemoryMeter meter;
@@ -58,7 +58,9 @@ public class Microbench
     public void setup()
     {
         MemoryMeter.Guess guess = MemoryMeter.Guess.valueOf(this.guess);
-        this.meter = new MemoryMeter().withGuessing(guess);
+        this.meter = MemoryMeter.builder()
+                                .withGuessing(guess)
+                                .build();
 
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < 300; i++)
@@ -136,6 +138,24 @@ public class Microbench
     //    }
 
     @Benchmark
+    public void arrayByteArray(Blackhole bh)
+    {
+        bh.consume(meter.sizeOfArray(bytes));
+    }
+
+    //    @Benchmark
+    //    public void arrayLongArray(Blackhole bh)
+    //    {
+    //        bh.consume(meter.sizeOfArray(longs));
+    //    }
+
+    //    @Benchmark
+    //    public void arrayObjectArray(Blackhole bh)
+    //    {
+    //        bh.consume(meter.sizeOfArray(objects));
+    //    }
+
+    @Benchmark
     public void cls1(Blackhole bh)
     {
         bh.consume(meter.measureDeep(cls1));
@@ -152,6 +172,30 @@ public class Microbench
     {
         bh.consume(meter.measureDeep(cls3));
     }
+
+    //    @Benchmark
+    //    public void naiveByteArray(Blackhole bh)
+    //    {
+    //        if (meter.getGuess() != MemoryMeter.Guess.ALWAYS_RUNTIME)
+    //            throw new RuntimeException();
+    //        bh.consume(meter.sizeOfArray(objects.length, byte.class));
+    //    }
+
+    //    @Benchmark
+    //    public void naiveLongArray(Blackhole bh)
+    //    {
+    //        if (meter.getGuess() != MemoryMeter.Guess.ALWAYS_RUNTIME)
+    //            throw new RuntimeException();
+    //        bh.consume(meter.sizeOfArray(objects.length, long.class));
+    //    }
+
+    //    @Benchmark
+    //    public void naiveObjectArray(Blackhole bh)
+    //    {
+    //        if (meter.getGuess() != MemoryMeter.Guess.ALWAYS_RUNTIME)
+    //            throw new RuntimeException();
+    //        bh.consume(meter.sizeOfArray(objects.length, Object.class));
+    //    }
 }
 
 @SuppressWarnings("unused")
@@ -179,4 +223,3 @@ class Cls3 extends Cls2
 {
     Object more = new Cls2();
 }
-
