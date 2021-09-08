@@ -8,7 +8,7 @@
     <version>5</version>
     <relativePath />
   </parent>
-  <groupId>com.github.jbellis</groupId>
+  <groupId>io.github.stephankoelle</groupId>
   <artifactId>jamm</artifactId>
   <packaging>jar</packaging>
   <version>0.3.4-SNAPSHOT</version>
@@ -16,15 +16,15 @@
   <description>
     Jamm provides MemoryMeter, a java agent to measure actual object memory use including JVM overhead.
   </description>
-  <url>https://github.com/jbellis/jamm/</url>
+  <url>https://github.com/stephankoelle/jamm/</url>
   <scm>
-    <connection>scm:git:git://github.com/jbellis/jamm.git</connection>
-    <developerConnection>scm:git:git@github.com:jbellis/jamm.git</developerConnection>
-    <url>http://github.com/jbellis/jamm/tree/master/</url>
+    <connection>scm:git:git://github.com/stephankoelle/jamm.git</connection>
+    <developerConnection>scm:git:git@github.com:stephankoelle/jamm.git</developerConnection>
+    <url>http://github.com/stephankoelle/jamm/tree/master/</url>
   </scm>
   <issueManagement>
     <system>github</system>
-    <url>http://github.com/jbellis/jamm/issues</url>
+    <url>http://github.com/stephankoelle/jamm/issues</url>
   </issueManagement>
   <licenses>
     <license>
@@ -74,6 +74,13 @@
     <developer>
       <id>mshuler</id>
       <name>Michael Shuler</name>
+      <roles>
+        <role>developer</role>
+      </roles>
+    </developer>
+    <developer>
+      <id>stephankoelle</id>
+      <name>Stephan Kölle</name>
       <roles>
         <role>developer</role>
       </roles>
@@ -151,14 +158,34 @@
           <argLine>-javaagent:${project.build.directory}/${project.build.finalName}.${project.packaging}</argLine>
         </configuration>
       </plugin>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <configuration>
-                <source>9</source>
-                <target>9</target>
-            </configuration>
-        </plugin>
+      <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.1</version>
+          <configuration>
+              <source>11</source>
+              <target>11</target>
+          </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.sonatype.plugins</groupId>
+        <artifactId>nexus-staging-maven-plugin</artifactId>
+        <version>1.6.7</version>
+        <extensions>true</extensions>
+        <configuration>
+          <serverId>ossrh</serverId>
+          <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+          <autoReleaseAfterClose>true</autoReleaseAfterClose>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
+
+  <distributionManagement>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
 </project>
