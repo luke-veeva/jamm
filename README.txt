@@ -42,9 +42,9 @@ and MemoryMeter will print the tree to System.out.
 The Maven coordinates for the latest version of Jamm are
 ========================================================
 
-groupId:    com.github.jbellis
+groupId:    io.github.stephankoelle
 artifactId: jamm
-version:    0.3.3
+version:    0.4.0
 
 The fine print
 ==============
