@@ -8,7 +8,7 @@ memory use including JVM overhead.
 Building
 ========
 
-"ant jar"; optionally, "ant test"
+mvn clean install
 
 
 Use
