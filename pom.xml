@@ -11,7 +11,7 @@
   <groupId>io.github.stephankoelle</groupId>
   <artifactId>jamm</artifactId>
   <packaging>jar</packaging>
-  <version>0.3.4</version>
+  <version>0.3.5-SNAPSHOT</version>
   <name>Java Agent for Memory Measurements</name>
   <description>
     Jamm provides MemoryMeter, a java agent to measure actual object memory use including JVM overhead.
@@ -21,6 +21,7 @@
     <connection>scm:git:git://github.com/stephankoelle/jamm.git</connection>
     <developerConnection>scm:git:git@github.com:stephankoelle/jamm.git</developerConnection>
     <url>http://github.com/stephankoelle/jamm/tree/master/</url>
+    <tag>HEAD</tag>
   </scm>
   <issueManagement>
     <system>github</system>
