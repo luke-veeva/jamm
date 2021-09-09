@@ -39,15 +39,15 @@ Dependency coordinates for the latest version of Jamm
 Gradle:
 
     dependencies {
-        implementation("com.github.jbellis:jamm:0.4.0")
+        implementation("com.github.stephankoelle:jamm:0.4.1")
     }
 
 Maven:
 
     <dependency>
-        <groupId>com.github.jbellis</groupId>
+        <groupId>com.github.stephankoelle</groupId>
         <artifactId>jamm</artifactId>
-        <version>0.4.0</version>
+        <version>0.4.1</version>
     </dependency>
 
 
