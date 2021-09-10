@@ -60,6 +60,8 @@ Building
 Benchmarks
 ==========
 
+"mvn -P microbench"
+
 See [`Microbench.java`](./src/org/github/jamm/jmh/Microbench.java)
 
 Some microbenchmark results
