@@ -22,7 +22,7 @@ import org.openjdk.jmh.infra.Blackhole;
 
 @Threads(3)
 @Fork(value = 1, jvmArgsPrepend = {
-        "-javaagent:target/jamm-0.4.0-SNAPSHOT.jar",
+        "-javaagent:target/jamm-0.4.2-SNAPSHOT-jar-with-dependencies.jar",
         "-Xms16g", "-Xmx16g",
         "-XX:+UseG1GC",
         "-XX:+AlwaysPreTouch"
@@ -34,7 +34,7 @@ import org.openjdk.jmh.infra.Blackhole;
 @OutputTimeUnit(TimeUnit.MICROSECONDS)
 public class Microbench
 {
-    @Param({ "ALWAYS_SPEC", "ALWAYS_UNSAFE", "ALWAYS_INSTRUMENTATION" })
+    @Param({ "ALWAYS_INSTRUMENTATION"}) //"ALWAYS_SPEC", "ALWAYS_UNSAFE", "NEVER"})
     private String guess;
 
     private MemoryMeter meter;
