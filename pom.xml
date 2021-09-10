@@ -262,7 +262,7 @@
     <profile>
       <id>microbench</id>
       <build>
-        <defaultGoal>exec:java</defaultGoal>
+        <defaultGoal>clean package exec:java</defaultGoal>
         <plugins>
           <plugin>
             <groupId>org.codehaus.mojo</groupId>
