@@ -16,16 +16,16 @@
   <description>
     Jamm provides MemoryMeter, a java agent to measure actual object memory use including JVM overhead.
   </description>
-  <url>https://github.com/stephankoelle/jamm/</url>
+  <url>https://github.com/luke-veeva/jamm/</url>
   <scm>
-    <connection>scm:git:git://github.com/stephankoelle/jamm.git</connection>
-    <developerConnection>scm:git:git@github.com:stephankoelle/jamm.git</developerConnection>
-    <url>http://github.com/stephankoelle/jamm/tree/master/</url>
+    <connection>scm:git:git://github.com/luke-veeva/jamm.git</connection>
+    <developerConnection>scm:git:git@github.com:luke-veeva/jamm.git</developerConnection>
+    <url>http://github.com/luke-veeva/jamm/tree/master/</url>
     <tag>v0.4.1</tag>
   </scm>
   <issueManagement>
     <system>github</system>
-    <url>http://github.com/stephankoelle/jamm/issues</url>
+    <url>http://github.com/luke-veeva/jamm/issues</url>
   </issueManagement>
   <licenses>
     <license>
